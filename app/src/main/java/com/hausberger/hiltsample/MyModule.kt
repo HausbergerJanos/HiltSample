@@ -1,18 +1,33 @@
 package com.hausberger.hiltsample
 
-import dagger.Binds
+import com.google.gson.Gson
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
 @InstallIn(ApplicationComponent::class)
 @Module
-abstract class MyModule {
+class MyModule {
 
     @Singleton
-    @Binds
-    abstract fun bindSomeDependency(
-        someImpl: SomeInterfaceImpl
-    ): SomeInterface
+    @Provides
+    fun provideSomeString(): String {
+        return "some string"
+    }
+
+    @Singleton
+    @Provides
+    fun provideSomeInterface(
+        someString: String
+    ): SomeInterface {
+        return SomeInterfaceImpl(someString)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGson(): Gson {
+        return Gson()
+    }
 }
