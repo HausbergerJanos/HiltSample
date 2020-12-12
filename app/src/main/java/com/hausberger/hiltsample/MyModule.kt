@@ -5,24 +5,25 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @InstallIn(ApplicationComponent::class)
 @Module
 class MyModule {
 
+    @ImplA
     @Singleton
     @Provides
-    fun provideSomeString(): String {
-        return "some string"
+    fun provideSomeInterfaceA(): SomeInterface {
+        return SomeInterfaceImplA()
     }
 
+    @ImplB
     @Singleton
     @Provides
-    fun provideSomeInterface(
-        someString: String
-    ): SomeInterface {
-        return SomeInterfaceImpl(someString)
+    fun provideSomeInterfaceB(): SomeInterface {
+        return SomeInterfaceImplB()
     }
 
     @Singleton
@@ -31,3 +32,11 @@ class MyModule {
         return Gson()
     }
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ImplA
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ImplB

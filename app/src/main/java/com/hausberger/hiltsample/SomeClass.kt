@@ -7,10 +7,16 @@ class SomeClass
 @Inject
 constructor(
     // Constructor injection
-    private val someInterfaceImpl: SomeInterface
+    @ImplA private val someInterfaceImplA: SomeInterface,
+    @ImplB private val someInterfaceImplB: SomeInterface,
+    private val gson: Gson
 ) {
 
-    fun doAThing(): String{
-        return "Look I got: ${someInterfaceImpl.getAThing()}"
+    fun doAThingA(): String{
+        return "Look I got: ${someInterfaceImplA.getAThing()}"
+    }
+
+    fun doAThingB(): String{
+        return "Look I got: ${someInterfaceImplB.getAThing()}"
     }
 }

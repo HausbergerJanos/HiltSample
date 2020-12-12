@@ -2,11 +2,11 @@ package com.hausberger.hiltsample
 
 import javax.inject.Inject
 
-class SomeInterfaceImpl
+class SomeInterfaceImplB
 @Inject
 constructor() : SomeInterface {
 
     override fun getAThing() : String{
-        return "A Thing"
+        return "A Thing2"
     }
 }
