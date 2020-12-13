@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
 }
 
@@ -63,6 +64,15 @@ dependencies {
     implementation "androidx.room:room-runtime:$room"
     implementation "androidx.room:room-ktx:$room"
     kapt "androidx.room:room-compiler:$room"
+    // endregion
+
+    // region -- For view model lifecycle scope --
+    def fragment_ktx = "1.2.5"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    // endregion
+
+    // region -- For view model instantiation --
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     // endregion
 
     testImplementation 'junit:junit:4.+'
